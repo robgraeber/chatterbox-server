@@ -13,7 +13,7 @@ app.createMessage = function(options){
 };
 
 app.messageStack.add = function(msg){
-  key = msg.objectId;
+  key = msg.created_at;
 
   if (this.storage[key] === undefined){
     app.chatrooms.add(msg);
@@ -28,7 +28,7 @@ app.send = function(messageObject) {
   }
 
   $.ajax({
-    url: 'https://api.parse.com/1/classes/chatterbox',
+    url: 'http://127.0.0.1:3000/classes/chatterbox',
     type: 'POST',
     data: JSON.stringify(messageObject),
     contentType: 'application/json',
@@ -48,12 +48,15 @@ app.fetch = function() {
     data: '',
     contentType: 'application/json',
     success: function (data) {
+      data = JSON.parse(data);
+      console.log(data);
       data = data.results;
       // TODO REFACTOR TO USE FIND
       _(data).each(function(msg){
         // Refactor this to return false if add fails
         app.messageStack.add(msg);
       });
+      console.log(app.messageStack);
       if(app.chatrooms.current === 'default'){
 	      app.displayMessages(app.messageStack.messages);
       } else {

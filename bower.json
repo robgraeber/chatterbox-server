@@ -1,0 +1,31 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/MrNice/2014-02-chatterbox-server",
+  "description": "Chatterbox Client",
+  "main": "app.js",
+  "keywords": [
+    "hack",
+    "reactor",
+    "student",
+    "project",
+    "sprint"
+  ],
+  "authors": [
+    "Rob and Nick"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "underscore": "~1.6.0",
+    "jquery": "~2.1.0"
+  }
+}

@@ -1,6 +1,6 @@
 var app = {};
 
-app.server = 'https://api.parse.com/1/classes/chatterbox?order=-createdAt';
+app.server = 'http://127.0.0.1:3000/classes/chatterbox?order=-createdAt';
 app.messageStack = { storage: {}, messages: [] };
 app.messages = { storage: {}, messages: [] };
 
