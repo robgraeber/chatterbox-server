@@ -1,6 +1,6 @@
 var app = {};
 
-app.server = 'http://65.52.119.27:3000/classes/chatterbox?order=-createdAt';
+app.server = 'http://localhost:3000/classes/chatterbox?order=-createdAt';
 app.messageStack = { storage: {}, messages: [] };
 app.messages = { storage: {}, messages: [] };
 

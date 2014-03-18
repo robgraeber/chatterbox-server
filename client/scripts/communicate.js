@@ -28,7 +28,7 @@ app.send = function(messageObject) {
   }
 
   $.ajax({
-    url: 'http://65.52.119.27:3000/classes/chatterbox',
+    url: 'http://localhost:3000/classes/chatterbox',
     type: 'POST',
     data: JSON.stringify(messageObject),
     contentType: 'application/json',
