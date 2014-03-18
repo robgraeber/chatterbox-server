@@ -5,7 +5,7 @@
  * this file and include it in basic-server.js so that it actually works.
  * *Hint* Check out the node module documentation at http://nodejs.org/api/modules.html. */
 var storage = require("./storage.js");
-exports.handleRequest = function(request, response) {
+exports.handler = function(request, response) {
   /* the 'request' argument comes from nodes http module. It includes info about the
   request - such as what URL the browser is requesting. */
 
@@ -15,6 +15,24 @@ exports.handleRequest = function(request, response) {
 
   var statusCode = 200;
   var payload = '';
+  /* Without this line, this server wouldn't work. See the note
+   * below about CORS. */
+  var headers = defaultCorsHeaders;
+  headers['Content-Type'] = "text/plain";
+
+  /* .writeHead() tells our server what HTTP status code to send back */
+  
+
+  /* Make sure to always call response.end() - Node will not send
+   * anything back to the client until you do. The string you pass to
+   * response.end() will be the body of the response - i.e. what shows
+   * up in the browser.*/
+   if(request.url.indexOf('/classes') === -1) {
+    statusCode = 404;
+    response.writeHead(statusCode, headers);
+    response.end("404 NOT FOUND!!!!"); 
+    return;
+  }
 
   if(request.method === 'POST'){
     statusCode = 201;
@@ -25,22 +43,11 @@ exports.handleRequest = function(request, response) {
     request.on('end', function () {
       var data = JSON.parse(payload);
       console.log("storage added", data);
+
       storage.add(data);
     });   
   }
-  /* Without this line, this server wouldn't work. See the note
-   * below about CORS. */
-  var headers = defaultCorsHeaders;
-  headers['Content-Type'] = "text/plain";
-
-  /* .writeHead() tells our server what HTTP status code to send back */
   response.writeHead(statusCode, headers);
-
-  /* Make sure to always call response.end() - Node will not send
-   * anything back to the client until you do. The string you pass to
-   * response.end() will be the body of the response - i.e. what shows
-   * up in the browser.*/
-
   response.end(JSON.stringify({results: storage.get()}));   
  };
 
