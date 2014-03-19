@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- dependencies -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- your scripts -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/setup.js"></script>
+    <script src="scripts/chatrooms.js"></script>
+    <script src="scripts/communicate.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/urlGrabber.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <h1>chatterbox</h1>
+      <div id="chatroom">
+        <div id="roomlist">
+          <button class="btn btn-warning main">Everything</button>
+        </div>
+      </div>
+      <input type="text" class="form-control username" placeholder="Set username..."></input>
+      <input type="text" class="form-control message" placeholder="Send message..."></input>
+      <button class="send btn btn-primary">Send</button>
+      <ul class="messages">
+      </ul>
+    </div>
+  </body>
+</html>

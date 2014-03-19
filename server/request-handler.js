@@ -17,7 +17,7 @@ exports.handler = function(request, response) {
   var payload = '';
   /* Without this line, this server wouldn't work. See the note
    * below about CORS. */
-  var headers = defaultCorsHeaders;
+  var headers = {};
   headers['Content-Type'] = "text/plain";
 
   /* .writeHead() tells our server what HTTP status code to send back */
@@ -49,6 +49,7 @@ exports.handler = function(request, response) {
   }
   response.writeHead(statusCode, headers);
   response.end(JSON.stringify({results: storage.get()}));   
+  // response.end(JSON.stringify(headers));   
  };
 
 /* These headers will allow Cross-Origin Resource Sharing (CORS).
@@ -56,9 +57,4 @@ exports.handler = function(request, response) {
  * are on different domains. (Your chat client is running from a url
  * like file://your/chat/client/index.html, which is considered a
  * different domain.) */
-var defaultCorsHeaders = {
-  "access-control-allow-origin": "*",
-  "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "access-control-allow-headers": "content-type, accept",
-  "access-control-max-age": 10 // Seconds.
-};
+
