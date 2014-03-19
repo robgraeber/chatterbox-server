@@ -48,7 +48,7 @@ app.fetch = function() {
     data: '',
     contentType: 'application/json',
     success: function (data) {
-      data = JSON.parse(data);
+      // data = JSON.parse(data);
       console.log(data);
       data = data.results;
       // TODO REFACTOR TO USE FIND
